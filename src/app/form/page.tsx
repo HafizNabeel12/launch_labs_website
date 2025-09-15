@@ -134,7 +134,7 @@ const StartupApplicationForm: React.FC = () => {
                         <div className="text-gray-700 space-y-4">
                             <p>
                                 Hos Launchlabs strever vi for å gjøre dristige ideer om til virkelege,
-                                "skalerbare bedrifter". Dette skjemaet hjelper oss å forstå og din bedrift, slik
+                                &quot;skalerbare bedrifter&quot;. Dette skjemaet hjelper oss å forstå og din bedrift, slik
                                 at vi kan skreddersydjenesteneereorevåredeiineeksakteebehov.
                             </p>
 
