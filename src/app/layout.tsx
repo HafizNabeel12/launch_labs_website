@@ -1,7 +1,7 @@
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import "./globals.css";
-import VoiceflowChatbot from "@/components/ui/Voiceflowchatbot";
+// import VoiceflowChatbot from "@/components/ui/Voiceflowchatbot";
 import Footer from "@/components/ui/Footer";
 import { NavBar } from "@/components/ui/Navbar";
 
@@ -139,7 +139,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
-        <VoiceflowChatbot />
+        {/* <VoiceflowChatbot /> */}
         <Footer />
       </body>
     </html>

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import ScrollUp from '@/components/ScrollUp';
 
 interface FormData {
+    file?: File | null;
     otherFounder: string;
     otherBudget: string;
     // Step 1: Basic info
@@ -38,13 +39,14 @@ const StartupApplicationForm: React.FC = () => {
         hearAboutUs: '',
         otherFounder: "",
         otherBudget: "",
+        file: null,
 
     });
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const updateFormData = (field: keyof FormData, value: string) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
+    const updateFormData = (field: keyof FormData, value: any) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
     };
 
     const nextStep = () => {
@@ -115,7 +117,7 @@ const StartupApplicationForm: React.FC = () => {
     // Landing page (Step 0)
     if (currentStep === 0) {
         return (
-            <div className="min-h-screen bg-gray-50 mt-24 max-w-7xl">
+            <div className="min-h-screen bg-gray-50 mt-24 max-w-7xl mx-auto">
                 <div className="max-w-2xl mx-auto px-6 py-12">
                     {/* Logo */}
                     <div className="mb-12">
@@ -127,7 +129,7 @@ const StartupApplicationForm: React.FC = () => {
 
                     {/* Main Content */}
                     <div className="space-y-8 ">
-                        <h1 className="text-4xl font-bold text-orange-500 leading-tight w-2xl">
+                        <h1 className="text-4xl font-bold text-orange-500 leading-tight sm:w-xl md:w-2xl">
                             Inntaksskjema for oppstartsbedrifter
                         </h1>
 
@@ -452,14 +454,77 @@ const StartupApplicationForm: React.FC = () => {
                                     <label className="block text-gray-700 font-medium mb-2">
                                         Noe annet vi bør vite om prosjektet ditt?
                                     </label>
-                                    <textarea
-                                        value={formData.additionalInfo}
-                                        onChange={(e) => updateFormData('additionalInfo', e.target.value)}
-                                        rows={6}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors resize-none"
-                                        placeholder=""
-                                    />
+                                    {/* File Upload Section */}
+                                    <div className="flex flex-col items-center w-full">
+                                        {!formData.file ? (
+                                            <label
+                                                htmlFor="fileUpload"
+                                                className="w-full max-w-2xl flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-10 text-center cursor-pointer hover:border-orange-500 transition"
+                                            >
+                                                <svg
+                                                    className="w-10 h-10 text-gray-500 mb-3"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M12 4v16m8-8H4"
+                                                    />
+                                                </svg>
+                                                <p className="text-gray-700 font-medium">
+                                                    Klikk eller dra for å laste opp
+                                                </p>
+                                                <p className="text-gray-500 text-sm">
+                                                    PDF, DOCX eller TXT (maks 10MB)
+                                                </p>
+                                                <input
+                                                    id="fileUpload"
+                                                    type="file"
+                                                    accept=".pdf,.docx,.txt"
+                                                    className="hidden"
+                                                    onChange={(e) => {
+                                                        const files = e.target.files;
+                                                        if (files && files.length > 0) {
+                                                            setFormData({ ...formData, file: files[0] });
+                                                        }
+                                                    }}
+                                                />
+                                            </label>
+                                        ) : (
+                                            <div className="w-full max-w-2xl flex items-center justify-between mt-4 px-4 py-3 border rounded-lg bg-gray-50">
+                                                <p className="text-gray-700 text-sm truncate">
+                                                    <span className="font-semibold">Valgt fil:</span> {formData.file.name}
+                                                </p>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setFormData({ ...formData, file: null })}
+                                                    className="text-red-500 hover:text-red-700 transition"
+                                                    title="Fjern fil"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        className="h-5 w-5"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke="currentColor"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={2}
+                                                            d="M6 18L18 6M6 6l12 12"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+
                                 </div>
+
 
                                 <div>
                                     <label className="block text-gray-700 font-medium mb-2">
