@@ -45,7 +45,7 @@ const StartupApplicationForm: React.FC = () => {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const updateFormData = (field: keyof FormData, value: any) => {
+    const updateFormData = (field: keyof FormData, value: string) => {
         setFormData((prev) => ({ ...prev, [field]: value }));
     };
 
