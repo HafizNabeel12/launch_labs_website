@@ -117,27 +117,26 @@ const StartupApplicationForm: React.FC = () => {
     // Landing page (Step 0)
     if (currentStep === 0) {
         return (
-            <div className="min-h-screen bg-gray-50 mt-24 max-w-7xl mx-auto">
+            <div className="min-h-screen bg-gray-50 mt-24 max-w-7xl ">
                 <div className="max-w-2xl mx-auto px-6 py-12">
                     {/* Logo */}
-                    <div className="mb-12">
+                    {/* <div className="mb-12">
                         <div className="flex items-center">
                             <div className="w-6 h-6 bg-orange-500 rounded mr-2"></div>
                             <span className="font-semibold text-gray-900">Launchlabs</span>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Main Content */}
                     <div className="space-y-8 ">
-                        <h1 className="text-4xl font-bold text-orange-500 leading-tight sm:w-xl md:w-2xl">
+                        <h1 className="text-4xl font-bold text-orange-500 leading-tight sm:w-xl md:w-4xl mx-auto">
                             Inntaksskjema for oppstartsbedrifter
                         </h1>
 
-                        <div className="text-gray-700 space-y-4">
-                            <p>
-                                Hos Launchlabs strever vi for å gjøre dristige ideer om til virkelege,
-                                &quot;skalerbare bedrifter&quot;. Dette skjemaet hjelper oss å forstå og din bedrift, slik
-                                at vi kan skreddersydjenesteneereorevåredeiineeksakteebehov.
+                        <div className="text-gray-700 space-y-4 ">
+                            <p className='font-bold'>
+                               Hos Launchlabs strever vi for å gjøre dristige ideer om til virkelige,
+                            &quot;skalerbare bedrifter&quot;. Dette skjemaet hjelper oss å forstå og din bedrift, slik at vi kan skreddersy tjenestene våre til dine eksakte behov.
                             </p>
 
                             <div className="space-y-1">
@@ -182,13 +181,7 @@ const StartupApplicationForm: React.FC = () => {
         <div className="min-h-screen bg-gray-50 mt-24">
 
             <div className="max-w-2xl mx-auto px-6 py-8">
-                {/* Logo */}
-                <div className="mb-8">
-                    <div className="flex items-center ">
-                        <div className="w-6 h-6 bg-orange-500 rounded mr-2"></div>
-                        <span className="font-semibold text-gray-900 ">Launchlabs</span>
-                    </div>
-                </div>
+                
 
                 {/* Back Button */}
                 <button
